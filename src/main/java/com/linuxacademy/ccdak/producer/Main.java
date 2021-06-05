@@ -29,7 +29,12 @@ public class Main {
                 String[] lineArray = line.split(":");
                 String key = lineArray[0];
                 String value = lineArray[1];
+                
+                // inventory purchases topic
                 producer.send(new ProducerRecord<>("inventory_purchases", key, value));
+                
+                
+                // apple topics
                 if (key.equals("apples")) {
                     producer.send(new ProducerRecord<>("apple_purchases", key, value));
                 }
